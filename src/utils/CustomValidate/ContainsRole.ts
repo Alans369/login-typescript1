@@ -1,4 +1,4 @@
-import { registerDecorator, ValidationOptions, ValidationArguments, ValidationDecoratorOptions } from 'class-validator';
+import { registerDecorator, ValidationOptions, ValidationArguments} from 'class-validator';
 
 export function ContainsRole(...roles: string[]) {
   return function (object: Object, propertyName: string) {
@@ -18,6 +18,6 @@ export function ContainsRole(...roles: string[]) {
           return `$property must be one of the following values: ${allowedRoles.join(', ')}`;
         }
       },
-    } as ValidationDecoratorOptions);
+    } );
   };
 }

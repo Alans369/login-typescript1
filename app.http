@@ -6,6 +6,6 @@ Content-Type: application/json
 
   
   "password": "string",
-  "role": "string",
-  "avatar": "string"
+  "role": "string"
+  
 }

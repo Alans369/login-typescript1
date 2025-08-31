@@ -1,3 +1,5 @@
+
+
 import express from 'express';
 import "reflect-metadata";
 
@@ -6,6 +8,7 @@ import { router } from "./routers/Auth";
 
 import { myDataSource } from "./ data-source";
 import { Userouter } from './routers/user';
+import { NextFunction, Request, Response } from 'express';
 
 
 export let dataSource:typeof myDataSource;
@@ -30,6 +33,8 @@ const app = express();
 
 
 app.use(express.json())
+
+
 
 app.use('/user',Userouter);
 

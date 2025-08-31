@@ -5,6 +5,8 @@ import { validate } from "class-validator";
 import { UserDto } from "../utils/Dto/Dto";
 
 
+
+
 export class UserController{ 
 
    // constructor(
@@ -12,6 +14,8 @@ export class UserController{
   //) {}
     static async createUser(req:Request, res:Response):Promise<Response>{ 
 
+     
+     
       const usuario:UserDto= req.body
       var user = new User();
       user.email=usuario.email??'';
@@ -44,6 +48,11 @@ export class UserController{
           return res.send('User created successfully');
       }
 
+        
+      
+      
+
+     
      
 
     }
