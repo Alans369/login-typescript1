@@ -2,7 +2,7 @@ import { ICrud } from "../Interface/ICrud";
 import  { Request, Response } from "express";
 import { User } from "../entity/user.entity";
 import { validate } from "class-validator";
-import { UserDto } from "../utils/Dto/UserDto";
+import { UserDto } from "../utils/Dto/Dto";
 
 
 export class UserController{ 
@@ -24,6 +24,7 @@ export class UserController{
 
       const errors = await validate(user)
       if (errors.length > 0) {
+        //console.log((errors))
           for (let i:number = 0; i < errors.length; i++) {
             
             messages.push(errors[i]?.constraints)

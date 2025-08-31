@@ -3,8 +3,8 @@ POST   http://localhost:3000/user/create
 Content-Type: application/json
 
 {
+
   
-  "name": "string",
   "password": "string",
   "role": "string",
   "avatar": "string"

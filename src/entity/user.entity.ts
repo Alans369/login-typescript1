@@ -10,33 +10,34 @@ import {
     Max,
     IsNotEmpty,
 } from "class-validator"
+
+import { ContainsRole } from "../utils/CustomValidate/ContainsRole"
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
     id!: number
     
-    @IsNotEmpty()
-    @MinLength(5, {
-    message: 'Title is too short',
-   })
+    @IsNotEmpty({message:'email should not be empty'})
+    @IsEmail()
     @Column()
     email!: string
     
+    @IsNotEmpty({message:'name should not be empty'})
     @MinLength(5, {
-    message: 'Title is too short',
+    message: 'name is too short',
    })
     @Column()
     name!: string
     
+    @IsNotEmpty({message:'password should not be empty'})
     @MinLength(5, {
-    message: 'Title is too short',
+    message: 'password is too short',
    })
     @Column()
     password!:string
     
-    @MinLength(5, {
-    message: 'Title is too short',
-   })
+    @IsNotEmpty({message:'role should not be empty'})
+    @ContainsRole('admin')  
     @Column()
     role!: string
     
