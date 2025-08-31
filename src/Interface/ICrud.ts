@@ -2,7 +2,7 @@ import { User } from "../entity/user.entity";
 
 export interface ICrud{
     
-    save(user:User):User;
+    save(user:User):Promise<User>;
     findAll():User;
     findById(id:number):User;
     update(id:number):User;

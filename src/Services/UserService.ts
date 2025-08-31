@@ -7,11 +7,12 @@ export class UserService implements ICrud{
 
     private userRepository:typeof UserRepository = UserRepository;
 
-    save(user:User):User{
-        this.userRepository.create(user);
-        const result =  this.userRepository.save(user);
-        console.log(result);
-        return {} as User;
+    async save(user:User):Promise<User>{
+       // this.userRepository.create(user);
+        const result:User = await  this.userRepository.save(user);
+        
+        return result;
+       
     }
 
     findAll():User{

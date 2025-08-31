@@ -1,11 +1,11 @@
 
-POST   http://localhost:3000/user/create
+POST   http://localhost:5000/api/v1/users
 Content-Type: application/json
 
 {
-
-  
+  "email": "salan@gmail.com",
+  "name": "string",
   "password": "string",
-  "role": "string"
+  "role": "admin"
   
 }

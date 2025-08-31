@@ -1,6 +1,5 @@
 import { DataSource } from "typeorm"
 
-
 export const myDataSource = new DataSource({
     type: "mysql",
     host: "mysql-test-esfe-8ff0.b.aivencloud.com",
@@ -12,3 +11,4 @@ export const myDataSource = new DataSource({
     logging: true,
     synchronize: false,
 })
+

@@ -1,43 +1,35 @@
-
-
-import express from 'express';
+import express,{Application} from 'express';
 import "reflect-metadata";
-
-import { router } from "./routers/Auth";
-
-
-import { myDataSource } from "./ data-source";
 import { Userouter } from './routers/user';
 import { NextFunction, Request, Response } from 'express';
-
-
-export let dataSource:typeof myDataSource;
-
-// establish database connection
-try {
-    async function initializeDataSource() {
-        dataSource = await myDataSource.initialize();
-        console.log("Data Source has been initialized!")
+export class App{
+    app:Application;
+    constructor(
+        private port?: number | string
+    ) {
+        this.app = express();
+        this.settings();
+        this.middlewares();
+        this.routes();
     }
-    initializeDataSource();
-    
-    
-     
-   
-} catch (error) {
-    console.error("Error during Data Source initialization:", error)
+
+    private settings() {
+        this.app.set('port', this.port || process.env.PORT || 3000);
+    }
+
+    private middlewares() {
+        
+        this.app.use(express.json());
+    }
+
+    private routes() {
+        this.app.use('/api/v1/users',Userouter);
+    }
+
+    async listen(): Promise<void> {
+        await this.app.listen(this.app.get('port'));
+        console.log('Server on port', this.app.get('port'));
+    }
+
+
 }
-
-const app = express();
-
-
-
-app.use(express.json())
-
-
-
-app.use('/user',Userouter);
-
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
-});

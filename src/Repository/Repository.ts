@@ -1,8 +1,21 @@
-import { dataSource } from "../app"
+
 
 import { User } from "../entity/user.entity";
 
-export const UserRepository = dataSource.getRepository(User).extend({
+import { myDataSource } from "../ data-source";
+
+    async function initializeDataSource(){
+         await myDataSource.initialize();
+        
+    }
+
+    initializeDataSource();
+    console.log("Data Source has been initialized!");
+
+ 
+
+
+export const UserRepository = myDataSource.getRepository(User).extend({
     findByName(firstName: string, lastName: string) {
         return this.createQueryBuilder("user")
             .where("user.firstName = :firstName", { firstName })

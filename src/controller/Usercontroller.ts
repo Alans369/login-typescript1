@@ -4,6 +4,8 @@ import { User } from "../entity/user.entity";
 import { validate } from "class-validator";
 import { UserDto } from "../utils/Dto/Dto";
 
+import { UserService } from "../Services/UserService";
+
 
 
 
@@ -45,7 +47,10 @@ export class UserController{
           return res.status(400).json({messages:erros})
       } else {
          console.log('Validation succeed')
-          return res.send('User created successfully');
+          const userService = new UserService();
+          const result = await userService.save(user);
+
+          return res.json(result);
       }
 
         
