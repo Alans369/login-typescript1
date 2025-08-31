@@ -1,10 +1,11 @@
 
-POST   http://localhost:3000
+POST   http://localhost:3000/user/create
 Content-Type: application/json
 
 {
-  "nombre": "alan",
-  "apellido": "campos",
-  "correo": "correo",
-  "password": "123456"
+  
+  "name": "string",
+  "password": "string",
+  "role": "string",
+  "avatar": "string"
 }
