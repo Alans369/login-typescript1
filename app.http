@@ -20,3 +20,15 @@ Content-Type: application/json
   
   
 }
+
+###
+
+PUT   http://localhost:5000/api/v1/categories/1
+Content-Type: application/json
+
+{
+  "name": "Gas"
+ 
+  
+  
+}
