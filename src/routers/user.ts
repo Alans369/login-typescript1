@@ -1,5 +1,4 @@
 import   {Router } from "express";
-import type { Request, Response } from "express";
 import { UserController } from "../controller/Usercontroller";
 
 
