@@ -1,6 +1,5 @@
-
-
 import { User } from "../entity/user.entity";
+import { Categories } from "../entity/Cateories.entity";
 
 import { myDataSource } from "../ data-source";
 
@@ -11,10 +10,7 @@ import { myDataSource } from "../ data-source";
 
     initializeDataSource();
     console.log("Data Source has been initialized!");
-
  
-
-
 export const UserRepository = myDataSource.getRepository(User).extend({
     findByName(firstName: string, lastName: string) {
         return this.createQueryBuilder("user")
@@ -23,3 +19,6 @@ export const UserRepository = myDataSource.getRepository(User).extend({
             .getMany()
     },
 })
+
+export const CategoryRepository = myDataSource.getRepository(Categories);
+  

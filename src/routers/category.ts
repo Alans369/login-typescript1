@@ -1,8 +1,8 @@
 import   {Router } from "express";
-import {CategoryController} from "../controller/Usercontroller"
+import {CategoryController} from "../controller/CategoryController"
 
 
 
-export const Userouter = Router();
+export const Categoryrouter = Router();
 
-Userouter.post('/create',UserController.createUser);
+Categoryrouter.post('/',CategoryController.createCategory);

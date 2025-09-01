@@ -9,8 +9,8 @@ export class Categories {
     @PrimaryGeneratedColumn()
     id!: number
 
-    @IsNotEmpty()
-    @IsString()
+    @IsNotEmpty({ message: "El nombre es obligatorio" })
+    @IsString({ message: "El nombre debe ser una cadena de texto" })
     @Column()
     name!: string
     
@@ -20,7 +20,6 @@ export class Categories {
     @CreateDateColumn()
     creationAt!:Date
         
-       
     @UpdateDateColumn() 
     updatedAt!:Date
     

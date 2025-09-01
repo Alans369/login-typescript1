@@ -1,6 +1,7 @@
 import express,{Application} from 'express';
 import "reflect-metadata";
 import { Userouter } from './routers/user';
+import { Categoryrouter } from './routers/category';
 import { NextFunction, Request, Response } from 'express';
 export class App{
     app:Application;
@@ -24,6 +25,7 @@ export class App{
 
     private routes() {
         this.app.use('/api/v1/users',Userouter);
+        this.app.use('/api/v1/categories',Categoryrouter);
     }
 
     async listen(): Promise<void> {

@@ -5,4 +5,4 @@ import { UserController } from "../controller/Usercontroller";
 
 export const Userouter = Router();
 
-Userouter.post('/create',UserController.createUser);
+Userouter.post('/',UserController.createUser);
