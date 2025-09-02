@@ -27,6 +27,23 @@ export class CategoryService{
         return result;
     }
 
+    async delete(id:number):Promise<boolean>{
+        const categoria =  await this.categoryRepository.encontrarActivos({id:id});
+
+        if(!categoria){
+            throw new Error("Category not found");
+        }
+        const rs = await this.categoryRepository.borrar(id);
+        console.log(rs);
+
+        return rs.affected!==undefined && rs.affected>0;
+
+       }
+
+
+    
+    
+
     // Implementación de métodos CRUD para la entidad Categories
 
 }

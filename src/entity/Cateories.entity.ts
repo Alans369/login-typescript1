@@ -16,6 +16,9 @@ export class Categories {
     
     @Column()
     slug!:string
+    
+    @Column({default:true})
+    estado!:boolean;
 
     @CreateDateColumn()
     creationAt!:Date

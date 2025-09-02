@@ -58,4 +58,29 @@ export class CategoryController{
             return res.status(200).json({message:"update category"});
     }
 
+    static async deleteCategory(req:Request, res:Response):Promise<Response>{
+
+            const id:unknown = req.params.id;
+
+            if(!id || isNaN(parseInt(id as string))){
+                return res.status(400).json({message:"Invalid id"});
+            }
+
+            const Cc = new CategoryService();
+
+
+            try{
+                 await Cc.delete(parseInt(id as string));
+
+            }
+            catch(error){
+                return res.status(400).json({message:(error as Error).message});
+            }
+
+           
+
+            // Lógica para eliminar la categoría por ID
+            return res.status(200).json({message:`delete category ${id}`});
+    }
+
 }

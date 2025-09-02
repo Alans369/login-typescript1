@@ -18,7 +18,26 @@ export const UserRepository = myDataSource.getRepository(User).extend({
             .andWhere("user.lastName = :lastName", { lastName })
             .getMany()
     },
+
+  
 })
 
-export const CategoryRepository = myDataSource.getRepository(Categories);
+export const CategoryRepository = myDataSource.getRepository(Categories).extend({
+      borrar(id:number){
+        return this.createQueryBuilder()
+            .update(Categories)
+            .set({estado:false})
+            .where("id = :id",{id:id})
+            .execute();
+    },
+    encontrarActivos(dato:{id:number}){
+        const {id} = dato;
+        
+        return this.createQueryBuilder()
+            .where("Categories.estado = :estado",{estado:true})
+            .andWhere("Categories.id = :id",{id:id})
+            .getOne();
+    }
+
+});
   
