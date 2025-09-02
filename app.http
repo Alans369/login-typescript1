@@ -9,20 +9,17 @@ Content-Type: application/json
   "role": "admin"
   
 }
-###
 
+###
 POST   http://localhost:5000/api/v1/categories
 Content-Type: application/json
 
 {
-  "name": "Capatos"
+  "name": "electricidad"
  
-  
-  
 }
 
 ###
-
 PUT   http://localhost:5000/api/v1/categories/string
 Content-Type: application/json
 

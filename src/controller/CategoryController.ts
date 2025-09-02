@@ -21,7 +21,7 @@ export class CategoryController{
         else{
             
             Categoria.slug=name.toLowerCase();
-            const result = await this.categoryService.save(Categoria);
+            const result = await CategoryController.categoryService.save(Categoria);
             return res.status(200).json(result);
 
         }
