@@ -1,22 +1,7 @@
-
-POST   http://localhost:5000/api/v1/users
-Content-Type: application/json
-
-{
-  "email": "salan@gmail.com",
-  "name": "string",
-  "password": "string",
-  "role": "admin"
-  
-}
-
-###
-GET  http://localhost:5000/api/v1/categories/1
-
+###Categorias
+GET  http://localhost:5000/api/v1/categories/3
 ###
 GET  http://localhost:5000/api/v1/categories/?page=1&pageSize=1
-
-
 ###
 POST  http://localhost:5000/api/v1/categories
 Content-Type: application/json
@@ -34,9 +19,18 @@ Content-Type: application/json
   "name": "Gas"
 }
 
-
 ###
-
 DELETE http://localhost:5000/api/v1/categories/2
 
+###Productos
+POST  http://localhost:5000/api/v1/products
+Content-Type: application/json
+
+{
+  "title": "Producto de prueba2",
+  "price": 1,
+  "description": "Este es un producto de prueba",
+  "categoryId":1,
+  "images": ["https://placeimg.com/640/480/any"]
+}
 

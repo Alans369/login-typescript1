@@ -2,7 +2,8 @@ import express,{Application} from 'express';
 import "reflect-metadata";
 import { Userouter } from './routers/user';
 import { Categoryrouter } from './routers/category';
-import { NextFunction, Request, Response } from 'express';
+import { Productrouter } from './routers/product';
+
 export class App{
     app:Application;
     constructor(
@@ -26,6 +27,7 @@ export class App{
     private routes() {
         this.app.use('/api/v1/users',Userouter);
         this.app.use('/api/v1/categories',Categoryrouter);
+        this.app.use('/api/v1/products',Productrouter);
     }
 
     async listen(): Promise<void> {

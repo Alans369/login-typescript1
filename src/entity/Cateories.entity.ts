@@ -1,10 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,UpdateDateColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn,CreateDateColumn,UpdateDateColumn, OneToMany } from "typeorm"
 import {
     IsNotEmpty,
     IsString,
 } from "class-validator"
 
 import { IsCategoryAlreadyExist } from "../utils/CustomValidate/CategoryAlredyExist";
+import { Products } from "./Products.entity";   
 
 @Entity()
 export class Categories {
@@ -28,6 +29,10 @@ export class Categories {
         
     @UpdateDateColumn() 
     updatedAt!:Date
+
+    @OneToMany(() => Products, products => products.category)
+     products!: Products[];
+
     
    
 }

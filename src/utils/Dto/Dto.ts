@@ -5,3 +5,11 @@ export interface UserDto{
   "password": string,
   "role": string,
 }
+
+export interface ProductDto{
+  "title": string,
+  "price": number,
+  "description": string,
+  "categoryId": number,
+  "images": string[]
+}

@@ -1,5 +1,6 @@
 import { User } from "../entity/user.entity";
 import { Categories } from "../entity/Cateories.entity";
+import { Products } from "../entity/Products.entity";
 
 import { myDataSource } from "../ data-source";
 
@@ -20,7 +21,7 @@ export const UserRepository = myDataSource.getRepository(User).extend({
     },
 
   
-})
+});
 
 export const CategoryRepository = myDataSource.getRepository(Categories).extend({
     borrar(id:number){
@@ -60,4 +61,8 @@ export const CategoryRepository = myDataSource.getRepository(Categories).extend(
     }
 
 });
+
+export const ProductRepository = myDataSource.getRepository(Products).extend({
+    
+})
   
