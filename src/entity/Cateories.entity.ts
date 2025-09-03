@@ -4,6 +4,8 @@ import {
     IsString,
 } from "class-validator"
 
+import { IsCategoryAlreadyExist } from "../utils/CustomValidate/CategoryAlredyExist";
+
 @Entity()
 export class Categories {
     @PrimaryGeneratedColumn()
@@ -12,6 +14,7 @@ export class Categories {
     @IsNotEmpty({ message: "El nombre es obligatorio" })
     @IsString({ message: "El nombre debe ser una cadena de texto" })
     @Column()
+    @IsCategoryAlreadyExist({ message: "La categoría ya existe" })
     name!: string
     
     @Column()

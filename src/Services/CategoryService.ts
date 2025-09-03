@@ -41,8 +41,6 @@ export class CategoryService{
        }
 
 
-    
-    
 
     // Implementación de métodos CRUD para la entidad Categories
 

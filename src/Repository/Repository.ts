@@ -23,7 +23,7 @@ export const UserRepository = myDataSource.getRepository(User).extend({
 })
 
 export const CategoryRepository = myDataSource.getRepository(Categories).extend({
-      borrar(id:number){
+    borrar(id:number){
         return this.createQueryBuilder()
             .update(Categories)
             .set({estado:false})
@@ -44,7 +44,12 @@ export const CategoryRepository = myDataSource.getRepository(Categories).extend(
             .skip((page - 1) * pageSize)
             .take(pageSize)
             .getManyAndCount();
-    }
+    },
+     findByName(Name: string) {
+        return this.createQueryBuilder()
+            .where("Categories.name = :Name", { Name })
+            .getOne()
+    },
 
 });
   
