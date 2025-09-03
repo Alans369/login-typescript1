@@ -5,6 +5,9 @@ import {CategoryController} from "../controller/CategoryController"
 
 export const Categoryrouter = Router();
 
+
+Categoryrouter.get('/:id',CategoryController.findById);
+
 Categoryrouter.post('/',CategoryController.createCategory);
 
 Categoryrouter.put('/:id',CategoryController.updateCategory);

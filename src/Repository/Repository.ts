@@ -51,5 +51,13 @@ export const CategoryRepository = myDataSource.getRepository(Categories).extend(
             .getOne()
     },
 
+    finById(dato:{id:number}){
+        const {id} = dato;
+        return this.createQueryBuilder("Categories")
+            .where("Categories.id = :id",{id:id})
+            .andWhere("Categories.estado = :estado",{estado:true})
+            .getOne();
+    }
+
 });
   

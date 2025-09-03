@@ -11,6 +11,10 @@ Content-Type: application/json
 }
 
 ###
+GET  http://localhost:5000/api/v1/categories/1
+
+
+###
 POST  http://localhost:5000/api/v1/categories
 Content-Type: application/json
 

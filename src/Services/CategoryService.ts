@@ -38,10 +38,20 @@ export class CategoryService{
 
         return rs.affected!==undefined && rs.affected>0;
 
-       }
+    }
+    async findById(id:number):Promise<Categories>{
 
+        const result:unknown = await this.categoryRepository.finById({id:id});
 
+        if(!result){
+            throw new Error("Category not found");
+        }
 
-    // Implementación de métodos CRUD para la entidad Categories
+        return result as Categories;
+
+    }
+
+    
+
 
 }
