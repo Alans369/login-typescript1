@@ -87,5 +87,28 @@ export class CategoryController{
                 
             }
     }
+    static async listCategories(req:Request, res:Response):Promise<Response>{
 
+            let page:unknown=req.query.page;
+            let pageSize:unknown=req.query.pageSize;
+
+            if(page===undefined) page=1;
+            if(pageSize===undefined) pageSize=5;
+
+            if(isNaN(parseInt(page as string)) ||isNaN(parseInt(pageSize as string))){
+                return res.status(400).json({message:"Invalid page or pageSize"});
+            }
+            if(parseInt(page as string)<=0 || parseInt(pageSize as string)<=0){
+                page=1;
+                pageSize=5;
+            }
+            const  result = await CategoryController.categoryService.listCategories(parseInt(page as string),parseInt(pageSize as string));
+
+            return res.status(200).json({
+                data:result.data,
+                total:result.total,
+                page:parseInt(page as string),
+                pageSize:parseInt(pageSize as string)
+            });
+    }
 }

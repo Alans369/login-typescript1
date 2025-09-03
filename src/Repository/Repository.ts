@@ -38,7 +38,7 @@ export const CategoryRepository = myDataSource.getRepository(Categories).extend(
             .andWhere("Categories.id = :id",{id:id})
             .getOne();
     },
-    selecinarPagina(page:number, pageSize:number){
+    selecionarPagina(page:number, pageSize:number){
         return this.createQueryBuilder("Categories")
             .where("Categories.estado = :estado",{estado:true})
             .skip((page - 1) * pageSize)

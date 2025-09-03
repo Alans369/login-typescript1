@@ -46,9 +46,14 @@ export class CategoryService{
         if(!result){
             throw new Error("Category not found");
         }
-
         return result as Categories;
+    }
 
+    async listCategories(page:number,pageSize:number):Promise<{data:Categories[], total:number}>{
+
+        const [result,total] = await this.categoryRepository.selecionarPagina(page,pageSize);
+
+        return {data:result,total:total};
     }
 
     
