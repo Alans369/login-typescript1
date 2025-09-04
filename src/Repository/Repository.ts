@@ -63,6 +63,14 @@ export const CategoryRepository = myDataSource.getRepository(Categories).extend(
 });
 
 export const ProductRepository = myDataSource.getRepository(Products).extend({
+    finId(data:{id:number}) {
+        const {id} = data;
+        return this.createQueryBuilder("product")
+            .leftJoinAndSelect("product.category", "category")
+            .where("product.id = :id", { id:id}) // Ejemplo de filtro por ID
+            .getMany();
+    },
     
+
 })
   

@@ -23,6 +23,9 @@ Content-Type: application/json
 DELETE http://localhost:5000/api/v1/categories/2
 
 ###Productos
+GET http://localhost:5000/api/v1/products/1
+
+###
 POST  http://localhost:5000/api/v1/products
 Content-Type: application/json
 
@@ -44,5 +47,7 @@ Content-Type: application/json
   "categoryId":1,
   "images": ["https://placeimg.com/640/480/any"]
 }
+###
+DELETE http://localhost:5000/api/v1/products/2
 
 

@@ -36,7 +36,7 @@ export class ProductService{
 
     async findById(id:number):Promise<Products>{
 
-        const result:unknown = await this.productRepository.findOneBy({id:id});
+        const result:unknown = await this.productRepository.finId({id:id});
 
         if(!result){
             throw new Error("Product not found");

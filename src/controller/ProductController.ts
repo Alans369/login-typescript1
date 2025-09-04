@@ -17,7 +17,20 @@ export class ProductController{
         return res.status(200).json({message:"find all products"});
     }
     static async finById(req:Request, res:Response):Promise<Response>{
-        return res.status(200).json({message:"find product by id"});
+        const id:unknown = req.params.id;
+
+        if(!id || isNaN(parseInt(id as string))){
+            return res.status(400).json({message:"Invalid id"});
+        }
+
+        try {
+            const result = await ProductController.ProductService.findById(parseInt(id as string));
+            return res.status(200).json(result);
+        } catch (error) {
+            return res.status(400).json({message:(error as Error).message});
+            
+        }
+        
     }
     static async CreateProduct(req:Request, res:Response):Promise<Response>{
         const Producto = new Products();
@@ -91,6 +104,21 @@ export class ProductController{
        
     }
     static async delete(req:Request, res:Response):Promise<Response>{
+        const id:unknown = req.params.id;
+
+        if(!id || isNaN(parseInt(id as string))){
+            return res.status(400).json({message:"Invalid id"});
+        }
+        try{
+             await ProductController.ProductService.delete(parseInt(id as string));
+        }
+        catch(error){
+            return res.status(400).json({message:(error as Error).message});
+        }
+
+
         return res.status(200).json({message:"delete product"});
+
+
     }
 }
