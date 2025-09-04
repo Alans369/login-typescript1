@@ -37,7 +37,7 @@ export class User {
     password!:string
     
     @IsNotEmpty({message:'role should not be empty'})
-    @ContainsRole('admin')  
+    @ContainsRole('admin','cliente')  
     @Column()
     role!: string
     

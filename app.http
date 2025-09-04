@@ -56,10 +56,10 @@ POST http://localhost:5000/api/v1/users
 Content-Type: application/json
 
 {
-  "email": "example@gmail.com",
+  "email": "exampl1e@gmail.com",
   "name":"alan56",
   "password":"1234567",
-  "role":"admin"
+  "role":"cliente"
 
 }
 
@@ -82,13 +82,11 @@ POST http://localhost:5000/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email":"salan@gmail.com",
-  "password":"string"
+  "email":"exampl1e@gmail.com",
+  "password":"1234567"
 }
 
 ###
 GET http://localhost:5000/api/v1/users/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzU2OTU3OTUyLCJleHAiOjE3NTY5NjE1NTJ9._RFO4PWznfV_r77-jJ9hG-M7A20ExdnFUPKlb_38RS4
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImNsaWVudGUiLCJpYXQiOjE3NTY5OTY2OTQsImV4cCI6MTc1NzAwMDI5NH0.Vb4kj6LAaFc3vktEwUnNPdIVc__pLxpvlpResqoFYRk
 

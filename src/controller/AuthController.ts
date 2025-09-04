@@ -15,7 +15,7 @@ export class AuthController {
         try {
             const result:User = await AuthController.userService.findUserBypasswordAndEmail(email, password);
             const token = JWT.crearToken({id:result.id,role:result.role})
-             res.status(200).json({
+             return res.status(200).json({
                 status: 200,
                 success: true,
                 message: "login success",
@@ -30,7 +30,7 @@ export class AuthController {
 
 
 
-        return res.send("Login exitoso");
+       
     }
 }
 

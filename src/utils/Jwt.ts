@@ -19,7 +19,7 @@ export class JWT{
     static  VerificarToken(token:string){
         try {
             var decoded = jwt.verify(token,key);
-            console.log(decoded)
+       
             return decoded;
         } catch(err) {
             throw err;
