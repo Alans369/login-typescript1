@@ -5,6 +5,7 @@ import { ProductService } from "../Services/ProductService";
 import { CategoryService } from "../Services/CategoryService";
 import { validate } from "class-validator";
 import { parseErrors } from "../utils/ParsearErrores";
+import { skip } from "node:test";
 
 
 export class ProductController{
@@ -49,17 +50,45 @@ export class ProductController{
 
         const result = await ProductController.ProductService.save(Producto);
         return res.status(200).json(result);
-
-
-
-
-
-
-        
-        return res.status(200).json({message:"save product"});
     }
     static async update(req:Request, res:Response):Promise<Response>{
-        return res.status(200).json({message:"update product"});
+
+        const producto = new Products();
+
+        const id:unknown = req.params.id;
+        console.log(typeof id);
+
+        if(!id || isNaN(parseInt(id as string))){
+            return res.status(400).json({message:"Invalid id"});
+        }
+
+        if (typeof req.body.categoryId !='number'){ return res.status(400).json({message:"categoryId is invalid"});}
+
+        let ProductUpdateDto=req.body;
+        producto.title = ProductUpdateDto.title;
+        producto.price = ProductUpdateDto.price;
+        producto.descripcion = ProductUpdateDto.description;
+        producto.images = ProductUpdateDto.images;
+
+        const errors = await validate(producto,{skipMissingProperties:true});
+        if (errors.length > 0) {
+            const messages:string[] = parseErrors(errors)
+            return res.status(400).json({ errors: messages});
+        }
+
+        try {
+             producto.slug = producto.title.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+            const result  = await ProductController.ProductService.update(parseInt(id as string),producto);
+            return res.status(200).json(result);
+            
+        } catch (error) {
+            return res.status(400).json({message:(error as Error).message});
+            
+        }
+
+
+
+       
     }
     static async delete(req:Request, res:Response):Promise<Response>{
         return res.status(200).json({message:"delete product"});

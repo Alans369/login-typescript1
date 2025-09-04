@@ -33,4 +33,16 @@ Content-Type: application/json
   "categoryId":1,
   "images": ["https://placeimg.com/640/480/any"]
 }
+###
+PUT http://localhost:5000/api/v1/products/3
+Content-Type: application/json
+
+{
+  "title": "Producto editado2",
+  "price":10,
+  "description": "Este es un producto de prueba",
+  "categoryId":1,
+  "images": ["https://placeimg.com/640/480/any"]
+}
+
 
