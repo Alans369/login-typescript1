@@ -13,11 +13,11 @@ import { myDataSource } from "../ data-source";
     console.log("Data Source has been initialized!");
  
 export const UserRepository = myDataSource.getRepository(User).extend({
-    findByName(firstName: string, lastName: string) {
+    findByName(email: string, password: string) {
         return this.createQueryBuilder("user")
-            .where("user.firstName = :firstName", { firstName })
-            .andWhere("user.lastName = :lastName", { lastName })
-            .getMany()
+            .where("user.email = :email", { email })
+            .andWhere("user.password = :password", { password })
+            .getOne()
     },
 
   

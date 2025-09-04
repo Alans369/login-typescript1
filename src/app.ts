@@ -3,6 +3,7 @@ import "reflect-metadata";
 import { Userouter } from './routers/user';
 import { Categoryrouter } from './routers/category';
 import { Productrouter } from './routers/product';
+import { Authrouter } from './routers/Auth';
 
 export class App{
     app:Application;
@@ -25,6 +26,7 @@ export class App{
     }
 
     private routes() {
+        this.app.use('/api/v1/auth/login',Authrouter)
         this.app.use('/api/v1/users',Userouter);
         this.app.use('/api/v1/categories',Categoryrouter);
         this.app.use('/api/v1/products',Productrouter);

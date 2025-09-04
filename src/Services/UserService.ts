@@ -43,7 +43,15 @@ export class UserService {
         }
         const rs = await this.userRepository.delete(id);
         return rs.affected!==undefined && rs.affected!>0;
-    }   
+    }
+    
+    async findUserBypasswordAndEmail(email:string,password:string):Promise<User>{
+        const result = await this.userRepository.findByName(email,password);
+        if(!result){
+            throw new Error("User not found");
+        }
+        return result;
+    }
 
 
 
