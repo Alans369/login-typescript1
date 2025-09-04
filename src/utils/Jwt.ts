@@ -18,13 +18,12 @@ export class JWT{
 
     static  VerificarToken(token:string){
         try {
-         var decoded = jwt.verify(token,key);
-         return decoded;
+            var decoded = jwt.verify(token,key);
+            console.log(decoded)
+            return decoded;
         } catch(err) {
-            return err;
-        // err
+            throw err;
         }
-
     }
 
     static generarToken(data:{id:number,role:string}){
